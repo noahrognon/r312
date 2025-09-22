@@ -1,4 +1,4 @@
-name: Build and Deploy to VPS
+name: Build and Deploy to VPSs
 
 on:
   push:
