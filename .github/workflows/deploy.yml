@@ -7,7 +7,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -30,22 +30,23 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: 22002
+        port: 22008
         source: "dist/*"
         target: "/var/www/r312/"
         strip_components: 1
         rm: false
         overwrite: true
         debug: true
+
     - name: Install production dependencies on VPS
       uses: appleboy/ssh-action@v1.0.0
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: 22002
+        port: 22008
         script: |
           cd /var/www/r312/server
           npm ci
           npm install send server-destroy
-          pm2 start -f entry.mjs
+          PORT=8082 pm2 start -f entry.mjs
