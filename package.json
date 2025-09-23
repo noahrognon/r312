@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "start": "node ./dist/server/entry.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.4.3",
@@ -14,6 +15,8 @@
     "astro": "^5.13.7",
     "daisyui": "^5.0.50",
     "pocketbase": "^0.26.1",
-    "tailwindcss": "^4.1.12"
+    "tailwindcss": "^4.1.12",
+    "send": "^1.2.0",
+    "server-destroy": "^1.0.1"
   }
 }
